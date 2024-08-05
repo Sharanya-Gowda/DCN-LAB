@@ -57,15 +57,15 @@ main(int argc, char* argv[])
     devices = pointToPoint.Install(nodes.Get(2),nodes.Get(3));
     interfaces = address.Assign(devices);
 
-    Ipv4AddressHelper address01;
-    NetDeviceContainer devices01;
-    address01.SetBase("10.1.3.0", "255.255.255.0");
-    devices01 = pointToPoint.Install(nodes.Get(1),nodes.Get(2));
-    Ipv4InterfaceContainer interfaces01 = address01.Assign(devices01);
+    Ipv4AddressHelper address1;
+    NetDeviceContainer devices1;
+    address1.SetBase("10.1.3.0", "255.255.255.0");
+    devices1 = pointToPoint.Install(nodes.Get(1),nodes.Get(2));
+    Ipv4InterfaceContainer interfaces1 = address1.Assign(devices1);
 
-    address01.SetBase("10.1.4.0", "255.255.255.0");
-    devices01 = pointToPoint.Install(nodes.Get(2),nodes.Get(3));
-    interfaces01 = address01.Assign(devices01);
+    address1.SetBase("10.1.4.0", "255.255.255.0");
+    devices1 = pointToPoint.Install(nodes.Get(2),nodes.Get(3));
+    interfaces1 = address1.Assign(devices1);
 
     Ipv4GlobalRoutingHelper::PopulateRoutingTables ();
 
@@ -115,7 +115,7 @@ main(int argc, char* argv[])
     onoff1.SetAttribute("DataRate", StringValue("50Mbps")); // bit/s
     ApplicationContainer apps1;
 
-    InetSocketAddress rmt1(interfaces01.GetAddress(2), port1);
+    InetSocketAddress rmt1(interfaces1.GetAddress(2), port1);
     rmt1.SetTos(0xb8);
     AddressValue remoteAddress1(rmt1);
     onoff1.SetAttribute("Remote", remoteAddress1);
